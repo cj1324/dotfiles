@@ -14,10 +14,10 @@ endif
 
 let colors_name = "hcdarkblue"
 
-hi Normal		guifg=#c0c0c0 guibg=#000040						ctermfg=gray ctermbg=black
+"hi Normal		guifg=#c0c0c0 guibg=#000040						ctermfg=gray ctermbg=black
 hi ErrorMsg		guifg=#ffffff guibg=#287eff						ctermfg=white ctermbg=lightblue
-hi Visual		guifg=#8080ff guibg=fg		gui=reverse				ctermfg=lightblue ctermbg=fg cterm=reverse
-hi VisualNOS	guifg=#8080ff guibg=fg		gui=reverse,underline	ctermfg=lightblue ctermbg=fg cterm=reverse,underline
+hi Visual		guifg=#8080ff guibg=fg		gui=reverse				ctermfg=lightblue ctermbg=black cterm=reverse
+hi VisualNOS	guifg=#8080ff guibg=fg		gui=reverse,underline	ctermfg=lightblue ctermbg=black cterm=reverse,underline
 hi Todo			guifg=#d14a14 guibg=#1248d1						ctermfg=red	ctermbg=darkblue
 hi Search		guifg=#90fff0 guibg=#2050d0						ctermfg=white ctermbg=darkblue cterm=underline term=underline
 hi IncSearch	guifg=#b0ffff guibg=#2050d0							ctermfg=darkblue ctermbg=gray
@@ -57,11 +57,11 @@ hi Statement	ctermfg=yellow cterm=none guifg=#ffff60 gui=none
 hi PreProc	ctermfg=magenta guifg=#ff80ff gui=none cterm=none
 hi type		ctermfg=green guifg=#60ff60 gui=none cterm=none
 hi Underlined	cterm=underline term=underline
-hi Ignore	guifg=bg ctermfg=bg
+hi Ignore	guifg=bg ctermfg=gray
 
 " suggested by tigmoid, 2008 Jul 18
-hi Pmenu guifg=#c0c0c0 guibg=#404080
-hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
+hi Pmenu ctermfg=black ctermbg=white guifg=#c0c0c0 guibg=#404080 
+hi PmenuSel  ctermfg=red ctermbg=blue  guifg=#ff0000 guibg=#2050d0
 hi PmenuSbar guifg=blue guibg=darkgray
 hi PmenuThumb guifg=#c0c0c0
 

@@ -104,7 +104,7 @@ set foldmethod=marker
 set tabstop=4
 
 "Tab转换为空格
-set expandtab
+"set expandtab
 
 " C语言自动缩进4空格
 set shiftwidth=4
@@ -173,9 +173,9 @@ let g:tagbar_width = 30
 
 
 "pydiction 1.2 python auto complete 智能提示的插件安装
-"let g:pydiction_location = '~/.vim/vim72/tools/pydiction/complete-dict'
+let g:pydiction_location = '/home/admin/chenj/vim/vim73/tools/pydiction/complete-dict'
 "defalut g:pydiction_menu_height == 15
-"let g:pydiction_menu_height = 20
+let g:pydiction_menu_height = 20
 
 "配置NERDTREE
 let NERDChristmasTree=1 "装饰窗体!
@@ -218,6 +218,31 @@ if $DISPLAY != '' && executable('xsel')
     nnoremap <silent> "+y :'[,']w !xsel -i -b -l /dev/null<CR>
     nnoremap <silent> "+p :r!xsel -b<CR>
 endif
+
+function AddPYH()
+    call setline(1, "#! /usr/bin/env python")
+    call append(1, "#-*- coding: utf-8 -*-")
+    call append(2,"\"\"\"")
+    call append(3,"")
+    call append(4,"\"\"\"")
+    call append(5,"")
+    call append(6,"__file__ = \"".expand('%:f')."\"")
+    call append(7, "__datetime__ = \"" . strftime('%Y-%m-%d %T', localtime()) ."\"")
+    call append(8,"__author__ = \"寒晨 <chen1324[at]gmail.com>\"")
+    call append(9,"__version__ = \"0.01\"")
+    call append(10,"__license__ = \"python\"")
+    call append(11,"")
+    call append(12,"")
+    call append(13,"if __name__ == \"__main__\":")
+    call append(14,"    pass")
+    normal gg
+    normal j
+    normal j
+    normal j
+endf
+
+"autocmd bufnewfile *.py call AddPYH()
+
 
 "切换菜单和工具栏的显示隐藏   （工具栏的显示被去掉栏）
 "map <F12> :if &guioptions =~# 'm' <Bar>
