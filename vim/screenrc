@@ -1,0 +1,10 @@
+hardstatus on
+hardstatus alwayslastline
+hardstatus alwayslastline "%{-b ck}%?%-Lw%?%{bg}%n*%f %t%?(%u)%?%{wk}%?%+Lw%? %= %{r}  %H %{g} %Y/%m/%d %0c "
+#hardstatus string "%{= G}%-Lw%{= .Y}%50> %n*%f %t%{= G}%+Lw%< %{= G}%-=%D %c:%s %m/%d/%Y"
+startup_message off
+vbell off
+autodetach on
+msgwait 1
+shell bash
+termcapinfo xterm|xterms|xs|rxvt|urxvt|tila ti@:te@

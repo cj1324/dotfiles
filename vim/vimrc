@@ -173,9 +173,11 @@ let g:tagbar_width = 30
 
 
 "pydiction 1.2 python auto complete 智能提示的插件安装
-let g:pydiction_location = '/home/admin/chenj/vim/vim73/tools/pydiction/complete-dict'
+"let g:pydiction_location = '/usr/share/vim/vim73/tools/'
 "defalut g:pydiction_menu_height == 15
-let g:pydiction_menu_height = 20
+"let g:pydiction_menu_height = 20
+
+map K :echo 'Not Type Key K _Help_'<CR>
 
 "配置NERDTREE
 let NERDChristmasTree=1 "装饰窗体!
@@ -284,9 +286,8 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 let g:statusline_max_path = 20 "目录的最大长度
 "获取工作目录
 function! CurDir()
-  let p = expand('%:h') "relative to current path, and head path only
+  let p = expand('%:p') "relative to current path, and head path only
   let p = substitute(p,'\','/','g')
- 
   let p = substitute(p, '^\V' . $HOME, '~', '')
   if len(p) > g:statusline_max_path 
     let p = simplify(p)
