@@ -1,5 +1,0 @@
-[geekymedia-current]
-name=Geekymedia CentOS EL5 Repository - Current
-baseurl=http://mirrors.geekymedia.com/centos/
-enabled=1
-gpgcheck=0
