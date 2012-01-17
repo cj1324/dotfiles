@@ -87,7 +87,7 @@ set nobackup
 set noswapfile
 
 "搜索时忽悠大小写
-set ignorecase
+"set ignorecase
 
 
 set nocp        "设置为扩展模式
@@ -103,8 +103,8 @@ set foldmethod=marker
 " Tab切换成4个空格
 set tabstop=4
 
-"Tab转换为空格
-"set expandtab
+"Tab转换为空格(公司不能用)
+set expandtab
 
 " C语言自动缩进4空格
 set shiftwidth=4
@@ -228,22 +228,21 @@ function AddPYH()
     call append(3,"")
     call append(4,"\"\"\"")
     call append(5,"")
-    call append(6,"__file__ = \"".expand('%:f')."\"")
-    call append(7, "__datetime__ = \"" . strftime('%Y-%m-%d %T', localtime()) ."\"")
-    call append(8,"__author__ = \"寒晨 <chen1324[at]gmail.com>\"")
-    call append(9,"__version__ = \"0.01\"")
-    call append(10,"__license__ = \"python\"")
+    call append(6,"__file__ = u\"".expand('%:f')."\"")
+    call append(7, "__datetime__ = u\"" . strftime('%Y-%m-%d %T', localtime()) ."\"")
+    call append(8,"__author__ = u\"hanchen <chen1324[at]gmail.com>\"")
+    call append(9,"__license__ = u\"python\"")
+    call append(10,"")
     call append(11,"")
-    call append(12,"")
-    call append(13,"if __name__ == \"__main__\":")
-    call append(14,"    pass")
+    call append(12,"if __name__ == u\"__main__\":")
+    call append(13,"    pass")
     normal gg
     normal j
     normal j
     normal j
 endf
 
-"autocmd bufnewfile *.py call AddPYH()
+autocmd bufnewfile *.py call AddPYH()
 
 
 "切换菜单和工具栏的显示隐藏   （工具栏的显示被去掉栏）

@@ -1,3 +1,11 @@
+chdir /home/hanchen/project/
+bindkey "^j" prev
+bindkey "^k" next
+bindkey "^l" windowlist
+#bindkey "\033[B" windowlist
+#bindkey "\033[A" clear
+
+
 hardstatus on
 hardstatus alwayslastline
 hardstatus alwayslastline "%{-b ck}%?%-Lw%?%{bg}%n*%f %t%?(%u)%?%{wk}%?%+Lw%? %= %{r}  %H %{g} %Y/%m/%d %0c "
@@ -8,3 +16,11 @@ autodetach on
 msgwait 1
 shell bash
 termcapinfo xterm|xterms|xs|rxvt|urxvt|tila ti@:te@
+screen -t root 0  su root
+screen -t debug 1
+screen -t dev 2
+screen -t dev2 3
+chdir /home/hanchen/
+screen -t home 4
+select 2
+
