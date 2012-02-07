@@ -111,8 +111,11 @@ set shiftwidth=4
 
 " 自动缩进
 set autoindent
+
 " 高亮当前行
 set cursorline
+" 高亮选中文本
+set hlsearch
 
 " encoding
 set encoding=utf-8
@@ -307,7 +310,7 @@ setlocal statusline+=\ PWD:%r%{CurDir()}%h
 setlocal statusline+=\%=\ [H:0x\%.2B]
 setlocal statusline+=\ Char:%-14.(%c%V%)\ %<%P
 setlocal statusline+=\ Line:%#StatuslineLinCur#\ %l%0*%#StatuslineLinSplit#/%0*%#StatuslineLinMax#%L\ %0*\ 
-setlocal statusline+=%#StatuslineTime#[%{strftime(\"%y/%m/%d\ %H:%M\")}]%0*By:寒晨\ 
+"setlocal statusline+=%#StatuslineTime#[%{strftime(\"%y/%m/%d\ %H:%M\")}]%0*By:寒晨\ 
 
 "}}}
 

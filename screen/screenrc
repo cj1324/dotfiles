@@ -1,26 +1,36 @@
-chdir /home/hanchen/project/
 bindkey "^j" prev
 bindkey "^k" next
 bindkey "^l" windowlist
 #bindkey "\033[B" windowlist
 #bindkey "\033[A" clear
 
+# backtick id showtime runspan command
+chdir
+backtick 1 10 10  ./.scr_sysinfo
 
 hardstatus on
 hardstatus alwayslastline
-hardstatus alwayslastline "%{-b ck}%?%-Lw%?%{bg}%n*%f %t%?(%u)%?%{wk}%?%+Lw%? %= %{r}  %H %{g} %Y/%m/%d %0c "
+hardstatus alwayslastline "%{-b ck}%?%-Lw%?%{bg}%n*%f %t%?(%u)%?%{wk}%?%+Lw%? %= %{r}  %1` %{g} %0c "
 #hardstatus string "%{= G}%-Lw%{= .Y}%50> %n*%f %t%{= G}%+Lw%< %{= G}%-=%D %c:%s %m/%d/%Y"
+
+
+
 startup_message off
 vbell off
 autodetach on
 msgwait 1
 shell bash
 termcapinfo xterm|xterms|xs|rxvt|urxvt|tila ti@:te@
+
+chdir /etc
 screen -t root 0  su root
+chdir /home/hanchen/project/hcblog/
 screen -t debug 1
 screen -t dev 2
+chdir /home/hanchen/project/
 screen -t dev2 3
 chdir /home/hanchen/
-screen -t home 4
+screen -t dba  4 
+screen -t home 5
 select 2
 
