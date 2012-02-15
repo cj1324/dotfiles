@@ -1,8 +1,0 @@
-# show  to screen last line
-
-export LANG=C
-tcpnum=`netstat -atn |grep tcp |grep -v tcp6 |wc -l`
-meminfo=`free |grep buffers/cache |awk  -F' ' '{num=(($3/($3+$4))*100);split(num,arr,".");print arr[1];}'`
-online=`who |wc -l`
-ifconfig |grep 'inet addr:'| awk -vonline=$online -vmeminfo=$meminfo -vtcpnum=$tcpnum -F":" '{split($2,myarr," ");printf("TcpC:(%s) OnL:(%s) Mem:(%s%%) IP:(%s)\n",tcpnum,online,meminfo,myarr[1])}' |head -n 1
-

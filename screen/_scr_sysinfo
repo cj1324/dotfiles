@@ -1,0 +1,8 @@
+# show  to screen last line
+
+export LANG=C
+tcpnum=`netstat -4atn | grep  tcp |wc -l`
+meminfo=`free |awk ' $1 ~ /^-\/\+/  {  print  int(($3/($3+$4))* 100) }'`
+online=`who |wc -l`
+myip=`ifconfig |awk  ' $0 ~ /inet\ addr:/ { split($2,arr,":");print arr[2];exit }'`
+awk -vonline=$online -vmeminfo=$meminfo -vtcpnum=$tcpnum -vmyip=$myip 'BEGIN {printf("TcpC:(%s) OnL:(%s) Mem:(%s%%) IP:(%s)\n",tcpnum,online,meminfo,myip);exit}' 
