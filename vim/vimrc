@@ -80,14 +80,14 @@ colorscheme hcdarkblue
 set completeopt=longest,menu
 
 
-set backspace=indent,eol,start "任何时候可以用退格
+set backspace=indent,eol,start "退格限制
 
 "禁止生成临时文件
 set nobackup
 set noswapfile
 
-"搜索时忽悠大小写
-"set ignorecase
+"搜索匹配大小写
+set ignorecase
 
 
 set nocp        "设置为扩展模式
@@ -96,7 +96,7 @@ set laststatus=2 "显示状态栏
 
 "关于折叠
 set foldenable
-set foldmethod=marker
+set foldmethod=indent
 "set foldmethod=manual
 
 
@@ -114,6 +114,7 @@ set autoindent
 
 " 高亮当前行
 set cursorline
+
 " 高亮选中文本
 set hlsearch
 
@@ -127,7 +128,7 @@ else
 endif
 "set fileencodings=ucs-bom,utf-8,chinese,latin-1
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set langmenu=zh_CN.utf-8
+"set langmenu=zh_CN.utf-8
 " language messages zh_cn.utf-8
 
 "  默认隐藏菜单栏
@@ -150,6 +151,7 @@ set tags=./tags,tags
 "设置空格核缩进的提示
 set list
 set listchars=tab:\|-,trail:=,extends:>,precedes:<
+
 "启动时不显示提示
 set shortmess=atI
 

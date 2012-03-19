@@ -1,1 +1,1 @@
-./configure  --disable-selinux --enable-pythoninterp=yes  --enable-cscope --enable-multibyte --disable-xim --enable-gui=no --disable-gpm --with-features=huge --with-compiledby=寒晨<chen1324@gmail.com> --with-vim-name=vi  --sysconfdir=/etc/vim  --prefix=/usr   --with-tlib=ncurses
+./configure  --disable-selinux --enable-pythoninterp=yes  --enable-cscope --enable-multibyte --disable-xim --enable-gui=no --disable-gpm --with-features=huge "--with-compiledby=寒晨 <chen1324@gmail.com>" --with-vim-name=vi   --prefix=/usr   --with-tlib=ncurses
