@@ -80,15 +80,17 @@ colorscheme hcdarkblue
 set completeopt=longest,menu
 
 
-set backspace=indent,eol,start "退格限制
+set backspace=indent,eol,start "任何时候可以用退格
 
 "禁止生成临时文件
 set nobackup
 set noswapfile
 
-"搜索匹配大小写
+"搜索时忽悠大小写
 set ignorecase
 
+" 高亮列  hi colorcolumn
+set colorcolumn=81
 
 set nocp        "设置为扩展模式
 "set mouse=v      " 鼠标任何模式可使用
@@ -96,27 +98,25 @@ set laststatus=2 "显示状态栏
 
 "关于折叠
 set foldenable
-set foldmethod=indent
+set foldmethod=marker
+"set foldmethod=indent
+
 "set foldmethod=manual
 
 
 " Tab切换成4个空格
 set tabstop=4
 
-"Tab转换为空格(公司不能用)
-set expandtab
+"Tab转换为空格 公司fix
+"set expandtab
 
 " C语言自动缩进4空格
 set shiftwidth=4
 
 " 自动缩进
 set autoindent
-
 " 高亮当前行
 set cursorline
-
-" 高亮选中文本
-set hlsearch
 
 " encoding
 set encoding=utf-8
@@ -128,7 +128,7 @@ else
 endif
 "set fileencodings=ucs-bom,utf-8,chinese,latin-1
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-"set langmenu=zh_CN.utf-8
+set langmenu=zh_CN.utf-8
 " language messages zh_cn.utf-8
 
 "  默认隐藏菜单栏
@@ -151,7 +151,6 @@ set tags=./tags,tags
 "设置空格核缩进的提示
 set list
 set listchars=tab:\|-,trail:=,extends:>,precedes:<
-
 "启动时不显示提示
 set shortmess=atI
 
@@ -161,7 +160,7 @@ set shortmess=atI
 "{{{
 
 "     F12编译python
-map <c-r> :!python %<cr>
+"map <c-r> :!python %<cr>
 
 "配置taglist 默认打开list窗口
 "let Tlist_Auto_Open=1
@@ -170,7 +169,7 @@ map <c-r> :!python %<cr>
 "let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
 "let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
 map <c-o> :TagbarToggle<CR>
-let g:tagbar_ctags_bin = 'ctags'
+let g:tagbar_ctags_bin = 'ctags-exuberant' " ctags
 let g:tagbar_width = 30
 "禁用pyflakes quick fix
 "let g:pyflakes_use_quickfix = 0
@@ -233,21 +232,25 @@ function AddPYH()
     call append(3,"")
     call append(4,"\"\"\"")
     call append(5,"")
-    call append(6,"__file__ = u\"".expand('%:f')."\"")
-    call append(7, "__datetime__ = u\"" . strftime('%Y-%m-%d %T', localtime()) ."\"")
-    call append(8,"__author__ = u\"hanchen <chen1324[at]gmail.com>\"")
-    call append(9,"__license__ = u\"python\"")
-    call append(10,"")
+    call append(6,"__file__ = \"".expand('%:f')."\"")
+    call append(7, "__datetime__ = \"" . strftime('%Y-%m-%d %T', localtime()) ."\"")
+    call append(8,"__author__ = \"寒晨 <chen1324[at]gmail.com>\"")
+    call append(9,"__version__ = \"0.01\"")
+    call append(10,"__license__ = \"python\"")
     call append(11,"")
-    call append(12,"if __name__ == u\"__main__\":")
-    call append(13,"    pass")
+    call append(12,"")
+    call append(13,"if __name__ == \"__main__\":")
+    call append(14,"    pass")
     normal gg
     normal j
     normal j
     normal j
 endf
 
-autocmd bufnewfile *.py call AddPYH()
+
+nnoremap  bb :call append(line("."),'__import__("pdb").set_trace()')<CR>
+
+"autocmd bufnewfile *.py call AddPYH()
 
 
 "切换菜单和工具栏的显示隐藏   （工具栏的显示被去掉栏）
@@ -290,8 +293,9 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 let g:statusline_max_path = 20 "目录的最大长度
 "获取工作目录
 function! CurDir()
-  let p = expand('%:p') "relative to current path, and head path only
+  let p = expand('%:h') "relative to current path, and head path only
   let p = substitute(p,'\','/','g')
+ 
   let p = substitute(p, '^\V' . $HOME, '~', '')
   if len(p) > g:statusline_max_path 
     let p = simplify(p)
@@ -312,7 +316,7 @@ setlocal statusline+=\ PWD:%r%{CurDir()}%h
 setlocal statusline+=\%=\ [H:0x\%.2B]
 setlocal statusline+=\ Char:%-14.(%c%V%)\ %<%P
 setlocal statusline+=\ Line:%#StatuslineLinCur#\ %l%0*%#StatuslineLinSplit#/%0*%#StatuslineLinMax#%L\ %0*\ 
-"setlocal statusline+=%#StatuslineTime#[%{strftime(\"%y/%m/%d\ %H:%M\")}]%0*By:寒晨\ 
+setlocal statusline+=%#StatuslineTime#[%{strftime(\"%y/%m/%d\ %H:%M\")}]%0*By:寒晨\ 
 
 "}}}
 
