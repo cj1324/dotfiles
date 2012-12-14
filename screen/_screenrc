@@ -1,0 +1,34 @@
+bindkey "^j" prev
+bindkey "^k" next
+bindkey "^l" windowlist
+#bindkey "\033[B" windowlist
+#bindkey "\033[A" clear
+
+# backtick id showtime runspan command
+chdir
+backtick 1 10 10  ./.scr_sysinfo
+
+hardstatus on
+hardstatus alwayslastline
+hardstatus alwayslastline "%{-b ck}%?%-Lw%?%{bg}%n*%f %t%?(%u)%?%{wk}%?%+Lw%? %= %{r}  %1` %{g} %0c "
+#hardstatus string "%{= G}%-Lw%{= .Y}%50> %n*%f %t%{= G}%+Lw%< %{= G}%-=%D %c:%s %m/%d/%Y"
+
+
+
+defscrollback 5000
+startup_message off
+vbell off
+autodetach on
+msgwait 1
+shell bash
+termcapinfo xterm|xterms|xs|rxvt|urxvt|tila ti@:te@
+
+chdir /etc
+screen -t root 0  sudo su -
+chdir /opt/iscanv/ui
+screen -t ser 1
+screen -t dev 2
+chdir /home/admin
+screen -t oth 3
+select 2
+
