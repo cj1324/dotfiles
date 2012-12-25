@@ -1,0 +1,8 @@
+EDITOR=vim;   	export EDITOR
+PAGER=less;  	export PAGER
+export PS1="\[\e[36;1m\]\u@\[\e[32;1m\]\H> \[\e[0m\]"
+export LSCOLORS=gxfxaxdxcxegedabagacad
+
+alias ls="ls -G"
+alias ll="ls -lGash"
+alias vi="vim"
