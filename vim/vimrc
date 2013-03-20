@@ -90,7 +90,7 @@ set noswapfile
 set ignorecase
 
 " 高亮列  hi colorcolumn
-set colorcolumn=81
+set colorcolumn=76
 
 set nocp        "设置为扩展模式
 "set mouse=v      " 鼠标任何模式可使用
@@ -168,8 +168,8 @@ set shortmess=atI
 "let Tlist_Show_One_File = 1             "不同时显示多个文件的tag，只显示当前文件的
 "let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
 "let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
-map <c-o> :TagbarToggle<CR>
-let g:tagbar_ctags_bin = 'ctags-exuberant' " ctags
+map <c-i> :TagbarToggle<CR>
+let g:tagbar_ctags_bin = 'ctags' " ctags
 let g:tagbar_width = 30
 "禁用pyflakes quick fix
 "let g:pyflakes_use_quickfix = 0
@@ -189,6 +189,10 @@ let NERDTreeHighlightCursorline=1 "高亮选中行
 "let NERDTreeQuitOnOpen=1 "打开文件后自动关闭树
 let NERDTreeWinPos='left'  "显示的窗体位置
 nnoremap <c-t> :NERDTreeToggle<cr>  "设置映射键位
+
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:pyflakes_use_quickfix=0
 
 
 "let blogit_username='admin' 
@@ -218,12 +222,12 @@ nnoremap tl :tablast<CR>
 
 
 "操系统剪切板 (需要xsel)
-if $DISPLAY != '' && executable('xsel')
-    nnoremap <silent> "*y :'[,']w !xsel -i -p -l /dev/null<CR>
-    nnoremap <silent> "*p :r!xsel -p<CR>
-    nnoremap <silent> "+y :'[,']w !xsel -i -b -l /dev/null<CR>
-    nnoremap <silent> "+p :r!xsel -b<CR>
-endif
+"if $DISPLAY != '' && executable('xsel')
+"    nnoremap <silent> "*y :'[,']w !xsel -i -p -l /dev/null<CR>
+"    nnoremap <silent> "*p :r!xsel -p<CR>
+"    nnoremap <silent> "+y :'[,']w !xsel -i -b -l /dev/null<CR>
+"    nnoremap <silent> "+p :r!xsel -b<CR>
+"endif
 
 function AddPYH()
     call setline(1, "#! /usr/bin/env python")
@@ -249,6 +253,7 @@ endf
 
 
 nnoremap  bb :call append(line("."),'__import__("pdb").set_trace()')<CR>
+nnoremap  cc :call append(line("."),'__import__("pprint").pprint(None)')<CR>
 
 "autocmd bufnewfile *.py call AddPYH()
 
