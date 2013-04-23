@@ -80,14 +80,14 @@ colorscheme hcdarkblue
 set completeopt=longest,menu
 
 
-set backspace=indent,eol,start "任何时候可以用退格
+"set backspace=indent,eol,start "任何时候可以用退格
 
 "禁止生成临时文件
 set nobackup
 set noswapfile
 
 "搜索时忽悠大小写
-set ignorecase
+"set ignorecase
 
 " 高亮列  hi colorcolumn
 set colorcolumn=76
@@ -108,15 +108,19 @@ set foldmethod=marker
 set tabstop=4
 
 "Tab转换为空格 公司fix
-"set expandtab
+set expandtab
 
 " C语言自动缩进4空格
 set shiftwidth=4
 
 " 自动缩进
 set autoindent
+
 " 高亮当前行
 set cursorline
+
+" 选中的文本高亮
+set hlsearch
 
 " encoding
 set encoding=utf-8
@@ -146,7 +150,7 @@ set number
 "黏贴 不缩进
 "set paste
 "ctags 设置
-set tags=./tags,tags
+set tags=/usr/local/bin/exctags
 
 "设置空格核缩进的提示
 set list
@@ -169,7 +173,7 @@ set shortmess=atI
 "let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
 "let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
 map <c-i> :TagbarToggle<CR>
-let g:tagbar_ctags_bin = 'ctags' " ctags
+let g:tagbar_ctags_bin = '/usr/local/bin/exctags' " ctags
 let g:tagbar_width = 30
 "禁用pyflakes quick fix
 "let g:pyflakes_use_quickfix = 0
@@ -186,13 +190,12 @@ map K :echo 'Not Type Key K _Help_'<CR>
 "配置NERDTREE
 let NERDChristmasTree=1 "装饰窗体!
 let NERDTreeHighlightCursorline=1 "高亮选中行
-"let NERDTreeQuitOnOpen=1 "打开文件后自动关闭树
+let NERDTreeQuitOnOpen=1 "打开文件后自动关闭树
 let NERDTreeWinPos='left'  "显示的窗体位置
 nnoremap <c-t> :NERDTreeToggle<cr>  "设置映射键位
 
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_underbar_completion = 1
-let g:pyflakes_use_quickfix=0
 
 
 "let blogit_username='admin' 
@@ -321,7 +324,7 @@ setlocal statusline+=\ PWD:%r%{CurDir()}%h
 setlocal statusline+=\%=\ [H:0x\%.2B]
 setlocal statusline+=\ Char:%-14.(%c%V%)\ %<%P
 setlocal statusline+=\ Line:%#StatuslineLinCur#\ %l%0*%#StatuslineLinSplit#/%0*%#StatuslineLinMax#%L\ %0*\ 
-setlocal statusline+=%#StatuslineTime#[%{strftime(\"%y/%m/%d\ %H:%M\")}]%0*By:寒晨\ 
+setlocal statusline+=%#StatuslineTime#[%{strftime(\"%y/%m/%d\ %H:%M\")}]%0*\ 
 
 "}}}
 
