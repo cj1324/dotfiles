@@ -36,7 +36,7 @@ hi StatusLine	guifg=blue guibg=darkgray gui=none		ctermfg=blue ctermbg=gray term
 hi StatusLineNC	guifg=black guibg=darkgray gui=none		ctermfg=black ctermbg=gray term=none cterm=none
 hi VertSplit	guifg=black guibg=darkgray gui=none		ctermfg=black ctermbg=gray term=none cterm=none
 
-hi Folded	guifg=#808080 guibg=#000040			ctermfg=darkgrey ctermbg=black cterm=bold term=bold
+hi Folded	guifg=#808080 guibg=#000040			ctermfg=white ctermbg=black cterm=bold term=bold
 hi FoldColumn	guifg=#808080 guibg=#000040			ctermfg=darkgrey ctermbg=black cterm=bold term=bold
 hi LineNr	guifg=#90f020			ctermfg=green cterm=none
 

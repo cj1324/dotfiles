@@ -90,7 +90,8 @@ set noswapfile
 "set ignorecase
 
 " 高亮列  hi colorcolumn
-set colorcolumn=76
+autocmd FileType python,c set colorcolumn=76
+
 
 set nocp        "设置为扩展模式
 "set mouse=v      " 鼠标任何模式可使用
@@ -106,12 +107,15 @@ set foldmethod=marker
 
 " Tab切换成4个空格
 set tabstop=4
+autocmd FileType  html,javascript,css set tabstop=2
 
 "Tab转换为空格 公司fix
 set expandtab
+"autocmd FileType  html,javascript,css set expandtab
 
 " C语言自动缩进4空格
 set shiftwidth=4
+autocmd FileType  html,javascript,css set shiftwidth=2
 
 " 自动缩进
 set autoindent
@@ -136,25 +140,28 @@ set langmenu=zh_CN.utf-8
 " language messages zh_cn.utf-8
 
 "  默认隐藏菜单栏
-set guioptions-=m
+"set guioptions-=m
 " 默认隐藏工具栏
-set guioptions-=T
+"set guioptions-=T
 
-set guioptions-=l
-set guioptions-=L
-set guioptions-=r
-set guioptions-=R
+"set guioptions-=l
+"set guioptions-=L
+"set guioptions-=r
+"set guioptions-=R
 
 "显示行号
 set number
 "黏贴 不缩进
 "set paste
 "ctags 设置
-set tags=/usr/local/bin/exctags
+"set tags=/usr/bin/ctags "/usr/local/bin/exctags
+
 
 "设置空格核缩进的提示
-set list
-set listchars=tab:\|-,trail:=,extends:>,precedes:<
+autocmd FileType python,javascript set list
+autocmd FileType python,javascript set listchars=tab:\|-,trail:=,extends:>,precedes:<
+
+
 "启动时不显示提示
 set shortmess=atI
 
@@ -172,13 +179,18 @@ set shortmess=atI
 "let Tlist_Show_One_File = 1             "不同时显示多个文件的tag，只显示当前文件的
 "let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
 "let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
-map <c-i> :TagbarToggle<CR>
-let g:tagbar_ctags_bin = '/usr/local/bin/exctags' " ctags
+map gb :TagbarToggle<CR>
+"let g:tagbar_ctags_bin = '/usr/local/bin/exctags' " ctags
 let g:tagbar_width = 30
 "禁用pyflakes quick fix
 "let g:pyflakes_use_quickfix = 0
 
 
+"autocmd FileType javascript nnoremap gc :JSHint %<CR>
+autocmd FileType python let g:pep8_map='gc'
+"autocmd FileType python let g:tagbar_width = 90
+
+"let g:jshintconfig = '/home/iscanv/trunk/src/iscanv/ui/static/app/dashboard/.jshintrc'
 
 "pydiction 1.2 python auto complete 智能提示的插件安装
 "let g:pydiction_location = '/usr/share/vim/vim73/tools/'
@@ -192,7 +204,9 @@ let NERDChristmasTree=1 "装饰窗体!
 let NERDTreeHighlightCursorline=1 "高亮选中行
 let NERDTreeQuitOnOpen=1 "打开文件后自动关闭树
 let NERDTreeWinPos='left'  "显示的窗体位置
-nnoremap <c-t> :NERDTreeToggle<cr>  "设置映射键位
+nnoremap gt :NERDTreeToggle<cr>  "设置映射键位
+
+
 
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_underbar_completion = 1
@@ -233,21 +247,17 @@ nnoremap tl :tablast<CR>
 "endif
 
 function AddPYH()
-    call setline(1, "#! /usr/bin/env python")
-    call append(1, "#-*- coding: utf-8 -*-")
-    call append(2,"\"\"\"")
-    call append(3,"")
-    call append(4,"\"\"\"")
-    call append(5,"")
-    call append(6,"__file__ = \"".expand('%:f')."\"")
-    call append(7, "__datetime__ = \"" . strftime('%Y-%m-%d %T', localtime()) ."\"")
-    call append(8,"__author__ = \"寒晨 <chen1324[at]gmail.com>\"")
-    call append(9,"__version__ = \"0.01\"")
-    call append(10,"__license__ = \"python\"")
-    call append(11,"")
-    call append(12,"")
-    call append(13,"if __name__ == \"__main__\":")
-    call append(14,"    pass")
+    call setline(1, "#!/usr/bin/env python")
+    call append(1, "# coding: utf-8")
+    call append(2, "\"\"\" Module Description: ")
+    call append(3, "")
+    call append(4, "\"\"\"")
+    call append(5, "")
+    call append(6, "__date__ = \"" . strftime('%Y-%m-%d', localtime()) ."\"")
+    call append(7, "")
+    call append(8, "")
+    call append(9, "if __name__ == \"__main__\":")
+    call append(10, "    pass")
     normal gg
     normal j
     normal j
@@ -255,10 +265,14 @@ function AddPYH()
 endf
 
 
-nnoremap  bb :call append(line("."),'__import__("pdb").set_trace()')<CR>
-nnoremap  cc :call append(line("."),'__import__("pprint").pprint(None)')<CR>
+autocmd FileType python nnoremap gd :call append(line("."),'__import__("pdb").set_trace()')<CR>
+autocmd FileType python nnoremap gp :call append(line("."),'__import__("pprint").pprint(None)')<CR>
 
-"autocmd bufnewfile *.py call AddPYH()
+autocmd FileType javascript nnoremap gu :call append(line("."),'"use strict";')<CR>
+autocmd FileType javascript nnoremap gd :call append(line("."),'debugger;')<CR>
+autocmd FileType javascript nnoremap gp :call append(line("."),'console.dir(1);')<CR>
+
+autocmd bufnewfile *.py call AddPYH()
 
 
 "切换菜单和工具栏的显示隐藏   （工具栏的显示被去掉栏）
