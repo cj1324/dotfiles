@@ -107,7 +107,7 @@ set foldmethod=marker
 
 " Tab切换成4个空格
 set tabstop=4
-autocmd FileType  html,javascript,css set tabstop=2
+autocmd FileType  html,javascript,css,yaml set tabstop=2
 
 "Tab转换为空格 公司fix
 set expandtab
@@ -115,7 +115,7 @@ set expandtab
 
 " C语言自动缩进4空格
 set shiftwidth=4
-autocmd FileType  html,javascript,css set shiftwidth=2
+autocmd FileType  html,javascript,css,yaml set shiftwidth=2
 
 " 自动缩进
 set autoindent
