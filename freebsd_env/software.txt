@@ -1,0 +1,4 @@
+bash
+tmux
+git
+vim
