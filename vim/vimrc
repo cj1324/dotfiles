@@ -125,7 +125,7 @@ autocmd FileType  html,javascript,css,yaml set shiftwidth=2
 set autoindent
 
 " 高亮当前行
-set cursorline
+"set cursorline
 
 " 选中的文本高亮
 set hlsearch
@@ -191,7 +191,7 @@ let g:tagbar_width = 30
 
 
 "autocmd FileType javascript nnoremap gc :JSHint %<CR>
-autocmd FileType python let g:pep8_map='gc'
+"autocmd FileType python let g:pep8_map='gc'
 "autocmd FileType python let g:tagbar_width = 90
 
 "let g:jshintconfig = '/home/iscanv/trunk/src/iscanv/ui/static/app/dashboard/.jshintrc'
@@ -252,7 +252,7 @@ nnoremap tl :tablast<CR>
 
 function AddPYH()
     call setline(1, "#!/usr/bin/env python")
-    call append(1, "# coding: utf-8")
+    call append(1, "# coding: UTF-8")
     call append(2, "\"\"\" Module Description: ")
     call append(3, "")
     call append(4, "\"\"\"")
