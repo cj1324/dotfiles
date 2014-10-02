@@ -116,6 +116,31 @@ set shortmess=atI
 
 "}}}
 
+" 插件管理
+" {{{
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'suan/vim-instant-markdown'
+NeoBundle 'jbking/vim-pep8'
+NeoBundle 'kevinw/pyflakes-vim'
+
+call neobundle#end()
+" }}}
+
 "一些MAP 和插件配置
 "{{{
 
