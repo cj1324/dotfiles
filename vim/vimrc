@@ -1,3 +1,34 @@
+" 插件管理
+" {{{
+
+" Required:
+if has('vim_starting')
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'nelstrom/vim-markdown-folding'
+NeoBundle 'Lee-W/c.vim'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'tomasr/molokai'
+"NeoBundle 'jbking/vim-pep8'
+"NeoBundle 'kevinw/pyflakes-vim'
+"NeoBundle 'altercation/vim-colors-solarized'
+call neobundle#end()
+" }}}
+
 "一些特殊配置项(非set)
 "{{{
 
@@ -19,27 +50,14 @@ endif
 
 "配色方案
 syntax enable
-"set background=dark
-colorscheme hcdarkblue
-"colorscheme solarized
+set background=dark
+colorscheme molokai
 
 
 "}}}
 
 "大多数SET
 "{{{
-
-
-
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
-"set showcmd		" Show (partial) command in status line.
-"set showmatch		" Show matching brackets.
-"set ignorecase		" Do case insensitive matching
-"set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
-"set autowrite		" Automatically save before commands like :next and :make
-"set hidden             " Hide buffers when they are abandoned
 
 
 "智能提示自动关闭
@@ -72,7 +90,7 @@ set tabstop=4
 autocmd FileType  html,javascript,css,yaml set tabstop=2
 
 "Tab转换为空格 公司fix
-"set expandtab
+set expandtab
 autocmd FileType  make set noexpandtab
 
 " C语言自动缩进4空格
@@ -102,8 +120,6 @@ set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 "显示行号
 set number
-"ctags 设置
-"set tags=/usr/bin/ctags "/usr/local/bin/exctags
 
 
 "设置空格核缩进的提示
@@ -112,34 +128,10 @@ set listchars=tab:\|-,trail:=,extends:>,precedes:<
 
 
 "启动时不显示提示
-set shortmess=atI
+set shortmess=atIW
 
 "}}}
 
-" 插件管理
-" {{{
-
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'suan/vim-instant-markdown'
-NeoBundle 'jbking/vim-pep8'
-NeoBundle 'kevinw/pyflakes-vim'
-
-call neobundle#end()
-" }}}
 
 "一些MAP 和插件配置
 "{{{
@@ -205,11 +197,11 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -237,6 +229,9 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+
+let g:C_CCompiler = 'clang'
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
