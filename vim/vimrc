@@ -12,17 +12,25 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
+NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'nelstrom/vim-markdown-folding'
 NeoBundle 'Lee-W/c.vim'
-NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'szw/vim-ctrlspace'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'jmcantrell/vim-virtualenv'
+"NeoBundle 'itchyny/lightline.vim'
+"NeoBundle 'kien/ctrlp.vim'
 "NeoBundle 'jbking/vim-pep8'
 "NeoBundle 'kevinw/pyflakes-vim'
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -51,7 +59,8 @@ endif
 "配色方案
 syntax enable
 set background=dark
-colorscheme molokai
+"colorscheme molokai
+colorscheme jellybeans
 
 
 "}}}
@@ -138,6 +147,15 @@ set shortmess=atIW
 
 map gb :TagbarToggle<CR>
 let g:tagbar_width = 30
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+let g:jellybeans_overrides = {
+\    'Todo': { 'guifg': '303030', 'guibg': 'f0f000',
+\              'ctermfg': 'Black', 'ctermbg': 'Yellow',
+\              'attr': 'bold' },
+\}
 
 "配置NERDTREE
 let NERDChristmasTree=1 "装饰窗体!
